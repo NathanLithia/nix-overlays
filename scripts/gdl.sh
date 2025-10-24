@@ -19,4 +19,7 @@ fi
 # If GDL_DIR wasn't set in config, use default
 GDL_DIR="${GDL_DIR:-$DEFAULT_DIR}"
 
+echo "Using browser: $BROWSER_COOKIES"
+echo "Download dir: $GDL_DIR"
+
 gallery-dl -v --cookies-from-browser "$BROWSER_COOKIES" -d "$GDL_DIR" "$1"
