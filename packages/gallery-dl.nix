@@ -18,7 +18,7 @@ python3Packages.buildPythonApplication {
     owner = "mikf";
     repo = "gallery-dl";
     tag = "v${version}";
-    hash = "sha256-BJqqTHFQlZzQiPAefn1MlO5XhoWaCeJY8AqsEHh9/+U="";
+    hash = "sha256-BJqqTHFQlZzQiPAefn1MlO5XhoWaCeJY8AqsEHh9/+U=";
   };
 
   build-system = [ python3Packages.setuptools ];
