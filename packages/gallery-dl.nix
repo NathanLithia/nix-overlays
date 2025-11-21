@@ -36,13 +36,13 @@ python3Packages.buildPythonApplication {
     "test_init"
   ];
 
-  disabledTestPaths = [
+  pytestFlagsArray = [
     # requires network access
-    "test/test_results.py"
-    "test/test_downloader.py"
+    "--ignore=test/test_results.py"
+    "--ignore=test/test_downloader.py"
 
     # incompatible with pytestCheckHook
-    "test/test_ytdl.py"
+    "--ignore=test/test_ytdl.py"
   ];
 
   pythonImportsCheck = [ "gallery_dl" ];
