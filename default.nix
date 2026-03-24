@@ -8,6 +8,7 @@ self: super: {
     mvdl = super.writeShellScriptBin "mvdl" (builtins.readFile ./scripts/mvdl.sh);
     mdl = super.writeShellScriptBin "mdl" (builtins.readFile ./scripts/mdl.sh);
     gdl = super.writeShellScriptBin "gdl" (builtins.readFile ./scripts/gdl.sh);
+    pythonhere = super.writeShellScriptBin "pythonhere" (builtins.readFile ./scripts/pythonhere.sh);
 
   };
 }
