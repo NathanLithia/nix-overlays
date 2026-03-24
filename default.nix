@@ -1,7 +1,8 @@
 self: super: {
   nathanlithia = {
-    gallery-dl = super.callPackage ./packages/gallery-dl.nix {};
-    yt-dlp = super.callPackage ./packages/yt-dlp.nix {};
+    gallery-dl = super.callPackage ./packages/gallery-dl/package.nix {};
+    yt-dlp = super.callPackage ./packages/yt-dlp/package.nix {};
+    alvr = super.callPackage ./packages/alvr/package.nix {};
 
     vdl = super.writeShellScriptBin "vdl" (builtins.readFile ./scripts/vdl.sh);
     mvdl = super.writeShellScriptBin "mvdl" (builtins.readFile ./scripts/mvdl.sh);
