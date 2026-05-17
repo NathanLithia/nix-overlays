@@ -10,6 +10,7 @@ fi
 # Default values
 BROWSER_COOKIES="vivaldi"
 DEFAULT_DIR="$(xdg-user-dir DOWNLOAD)/GalleryDL"
+ABORT_SKIP=10
 
 # Load config file if it exists
 if [ -f "$CONFIG_FILE" ]; then
@@ -22,4 +23,7 @@ GDL_DIR="${GDL_DIR:-$DEFAULT_DIR}"
 echo "Using browser: $BROWSER_COOKIES"
 echo "Download dir: $GDL_DIR"
 
-gallery-dl -v --cookies-from-browser "$BROWSER_COOKIES" -d "$GDL_DIR" "$1"
+gallery-dl -v --cookies-from-browser "$BROWSER_COOKIES" \
+           -d "$GDL_DIR" \
+           "$1" \
+           -o "skip=abort:$ABORT_SKIP"
