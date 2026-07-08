@@ -6,6 +6,15 @@ if [ -z "$1" ]; then
 fi
 
 YT_DIR="$(xdg-user-dir MUSIC)/Youtube"
-mkdir -p "$YT_DIR"
 
-yt-dlp -t mp3 --embed-thumbnail  -P "$YT_DIR" $1
+if [ "$PWD" != "$HOME" ]; then
+	read -p "You're not in your home directory. Download to current directory ($PWD) instead? [y/N] " answer
+	case "$answer" in
+		[Yy]*)
+			YT_DIR="$PWD"
+			;;
+	esac
+fi
+
+mkdir -p "$YT_DIR"
+yt-dlp -t mp3 --embed-thumbnail -P "$YT_DIR" $1
