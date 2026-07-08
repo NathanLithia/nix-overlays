@@ -1,17 +1,17 @@
 {
   lib,
-  fetchurl,
+  fetchzip,
   nix-update-script,
   yt-dlp,
   python3Packages,
 }:
-python3Packages.buildPythonApplication {
+python3Packages.buildPythonApplication (finalAttrs: {
   pname = "gallery-dl";
-  version = "1.31.10";
+  version = "1.32.5";
   pyproject = true;
-  src = fetchurl {
-    url = "https://github.com/mikf/gallery-dl/releases/download/v1.31.10/gallery_dl-1.31.10.tar.gz";
-    hash = "sha256-04fEFCnhTCZG7rEChb9Hd88O09po7j8u3LpQXz4Te7c=";
+  src = fetchzip {
+    url = "https://codeberg.org/mikf/gallery-dl/archive/v${finalAttrs.version}.zip";
+    hash = "sha256-6E4PgJ6VWI0c6TyQOZ0siqsMxNNLpymy8/rANWaBVnU=";
   };
   build-system = [ python3Packages.setuptools ];
   dependencies = [
@@ -34,7 +34,7 @@ python3Packages.buildPythonApplication {
   pythonImportsCheck = [ "gallery_dl" ];
   passthru.updateScript = nix-update-script { };
   meta = {
-    changelog = "https://github.com/mikf/gallery-dl/blob/v1.31.10/CHANGELOG.md";
+    changelog = "https://github.com/mikf/gallery-dl/blob/v${finalAttrs.version}/CHANGELOG.md";
     description = "Command-line program to download image-galleries and -collections from several image hosting sites";
     homepage = "https://github.com/mikf/gallery-dl";
     license = lib.licenses.gpl2Only;
@@ -45,4 +45,4 @@ python3Packages.buildPythonApplication {
       lucasew
     ];
   };
-}
+})
